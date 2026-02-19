@@ -96,6 +96,15 @@ elif command -v batcat >/dev/null 2>&1; then
     alias cat='batcat -pp'
 fi
 
+if command -v yazi >/dev/null 2>&1; then
+  function y() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    command yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd < "$tmp"
+    [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
+  }
+fi
 # Add to PATH to Install and run programs with "pip install --user"
 PATH=$PATH:~/.local/bin
 
