@@ -1,3 +1,14 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Load omarchy-zsh configuration
+if [[ -d /usr/share/omarchy-zsh/conf.d ]]; then
+  for config in /usr/share/omarchy-zsh/conf.d/*.zsh; do
+    [[ -f "$config" ]] && source "$config"
+  done
+fi
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -79,7 +90,11 @@ alias opendir="nautilus ."
 alias c='clear'
 alias k="microk8s kubectl"
 alias helm="microk8s helm"
-alias cat="batcat"
+if command -v bat >/dev/null 2>&1; then
+    alias cat='bat -pp'
+elif command -v batcat >/dev/null 2>&1; then
+    alias cat='batcat -pp'
+fi
 
 # Add to PATH to Install and run programs with "pip install --user"
 PATH=$PATH:~/.local/bin
@@ -117,30 +132,12 @@ function chpwd() {
 }
 xhost +local:root > /dev/null 2>&1
 
-# if [ "$TERM" = "xterm-kitty" ]; then
-#         PATH=/usr/bin/:$PATH kitty +kitten ssh "$@"
-# else
-#         /usr/bin/ssh "$@"
-# fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dwffls/.miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/dwffls/.miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/dwffls/.miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/dwffls/.miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/home/dwffls/.miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/dwffls/.miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-
 source "$HOME/.cargo/env" > /dev/null 2>&1
+
+
+# Load omarchy-zsh functions and aliases
+if [[ -d /usr/share/omarchy-zsh/functions ]]; then
+  for func in /usr/share/omarchy-zsh/functions/*.zsh; do
+    [[ -f "$func" ]] && source "$func"
+  done
+fi
