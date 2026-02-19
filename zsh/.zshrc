@@ -1,13 +1,16 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if command -v try &>/dev/null; then
+  eval "$(try init ~/tries)"
+fi
+
 # Load omarchy-zsh configuration
 if [[ -d /usr/share/omarchy-zsh/conf.d ]]; then
   for config in /usr/share/omarchy-zsh/conf.d/*.zsh; do
     [[ -f "$config" ]] && source "$config"
   done
 fi
-
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -142,7 +145,6 @@ function chpwd() {
 xhost +local:root > /dev/null 2>&1
 
 source "$HOME/.cargo/env" > /dev/null 2>&1
-
 
 # Load omarchy-zsh functions and aliases
 if [[ -d /usr/share/omarchy-zsh/functions ]]; then

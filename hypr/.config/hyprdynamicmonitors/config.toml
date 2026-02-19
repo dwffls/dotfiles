@@ -1,0 +1,38 @@
+[general]
+destination = "$HOME/.config/hypr/monitors.conf"
+
+[power_events]
+
+[power_events.dbus_query_object]
+path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+[[power_events.dbus_signal_match_rules]]
+object_path = "/org/freedesktop/UPower/devices/line_power_AC"
+
+
+[profiles.Home]
+config_file = "/home/dwffls/.config/hyprdynamicmonitors/hyprconfigs/Home.go.tmpl"
+config_file_type = "template"
+[profiles.Home.conditions]
+
+[[profiles.Home.conditions.required_monitors]]
+description = "AU Optronics 0xD49C"
+monitor_tag = "monitor0"
+
+[[profiles.Home.conditions.required_monitors]]
+description = "LG Electronics LG HDR 4K 0x0007A4AC"
+monitor_tag = "monitor1"
+
+[[profiles.Home.conditions.required_monitors]]
+description = "LG Electronics LG HDR 4K 0x0007A4D3"
+monitor_tag = "monitor2"
+
+
+[profiles.Laptop]
+config_file = "/home/dwffls/.config/hyprdynamicmonitors/hyprconfigs/Laptop.go.tmpl"
+config_file_type = "template"
+[profiles.Laptop.conditions]
+
+[[profiles.Laptop.conditions.required_monitors]]
+description = "AU Optronics 0xD49C"
+monitor_tag = "monitor0"
