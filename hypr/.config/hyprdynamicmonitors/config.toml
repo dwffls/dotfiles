@@ -36,3 +36,21 @@ config_file_type = "template"
 [[profiles.Laptop.conditions.required_monitors]]
 description = "AU Optronics 0xD49C"
 monitor_tag = "monitor0"
+
+
+[profiles.Work]
+config_file = "/home/dwffls/.config/hyprdynamicmonitors/hyprconfigs/Work.go.tmpl"
+config_file_type = "template"
+[profiles.Work.conditions]
+
+[[profiles.Work.conditions.required_monitors]]
+description = "AU Optronics 0xD49C"
+monitor_tag = "monitor0"
+
+[[profiles.Work.conditions.required_monitors]]
+description = "Lenovo Group Limited P24h-2L V309749V"
+monitor_tag = "monitor1"
+
+[[profiles.Work.conditions.required_monitors]]
+description = "Lenovo Group Limited LEN P24q-20 V308Z5GA"
+monitor_tag = "monitor2"
