@@ -36,4 +36,4 @@ keybind = ctrl+shift+right=goto_split:right
 keybind = ctrl+shift+up=goto_split:up
 keybind = ctrl+shift+down=goto_split:down
 # Slowdown mouse scrolling
-# mouse-scroll-multiplier = 0.95
+mouse-scroll-multiplier = 0.95
