@@ -46,5 +46,5 @@ o.bind("SUPER + R", nil, "hyprctl reload")
 -- Workspace switch: code:10..19 -> ws 1..10
 for i = 1, 10 do
     hl.unbind("SUPER + code:" .. (9 + i))
-    o.bind("SUPER + code:" .. (9 + i), "Switch to workspace " .. i, hl.dsp.focus({ workspace = i }))
+    o.bind("SUPER + code:" .. (9 + i), "Switch to workspace " .. i, hl.dsp.focus({ workspace = i, on_current_monitor = true }))
 end
