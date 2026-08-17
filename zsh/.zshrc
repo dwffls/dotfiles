@@ -44,6 +44,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light sunlei/zsh-ssh
 
 # Add in snippets
 zinit snippet OMZP::git
