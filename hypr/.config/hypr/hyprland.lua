@@ -30,3 +30,12 @@ require("default.hypr.toggles")
 
 o.window("zen", { workspace = "1" })
 o.window("code", { workspace = "2" })
+
+
+require("hyprcaffeine-keybinds")
+
+
+hl.env("OMARCHY_SCREENSHOT_DIR", os.getenv("HOME") .. "/screenshots")
+
+-- Added by hyprmoncfg: its generated monitor rules load last, so nothing before this can override the applied layout.
+do local path = os.getenv("HOME") .. "/.config/hypr/hyprmoncfg-monitors.lua"; local file = io.open(path, "r"); if file then file:close(); dofile(path) end end

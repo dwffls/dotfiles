@@ -32,14 +32,15 @@
 hl.unbind("SUPER + C")
 hl.unbind("SUPER + V")
 hl.unbind("SUPER CTRL + V")
+
 hl.unbind("SUPER + W")
+o.bind("SUPER + W", "Open Whatsapp", "prettyzap --toggle")
 
 -- Overrides
 hl.unbind("SUPER CTRL + V")  -- (dup, drop if already above)
 o.bind("CTRL + SHIFT + V", "Clipboard manager", "omarchy-menu-clipboard")
 o.bind("Scroll_Lock", nil, "omarchy-system-lock")
 
-hl.unbind("SUPER + W")  -- (dup)
 o.bind("SUPER + Q", "Close window", hl.dsp.window.close())
 o.bind("SUPER + R", nil, "hyprctl reload")
 
